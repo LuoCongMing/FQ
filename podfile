@@ -1,0 +1,15 @@
+platform :ios,'9.0'
+target 'Fanqie' do
+ pod 'AFNetworking' ,'3.1.0'
+ pod 'MBProgressHUD','1.0'
+ pod 'ReactiveCocoa','2.5.0'
+ pod 'DZNEmptyDataSet'
+ pod 'IQKeyboardManager'
+ pod 'MJRefresh'
+ pod 'MJExtension'
+ pod 'UMengUShare/Social/WeChat'
+ pod 'UMengUShare/Social/QQ'
+ pod 'Masonry'
+ pod 'Realm'
+ pod 'SDCycleScrollView','~> 1.75'
+end

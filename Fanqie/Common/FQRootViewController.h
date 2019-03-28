@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FQRootViewController.h
 //  Fanqie
 //
 //  Created by 周建波 on 2019/3/13.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface FQRootViewController : UITabBarController
 
 @end
 
+NS_ASSUME_NONNULL_END

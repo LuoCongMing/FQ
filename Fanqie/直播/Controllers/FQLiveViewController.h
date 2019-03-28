@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  FQLiveViewController.h
 //  Fanqie
 //
 //  Created by 周建波 on 2019/3/13.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) UIWindow *window;
+@interface FQLiveViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
