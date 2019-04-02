@@ -54,10 +54,23 @@
 		04453C28224B74B60079B112 /* FQLiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04453C26224B74B60079B112 /* FQLiveCell.xib */; };
 		04453C2B224BC2760079B112 /* FQLiveHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04453C2A224BC2760079B112 /* FQLiveHeaderView.m */; };
 		04453C2E224BC4620079B112 /* FQLiveDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04453C2D224BC4620079B112 /* FQLiveDetailVC.m */; };
+		04453C7F224C976E0079B112 /* FQVedioContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04453C7E224C976E0079B112 /* FQVedioContentView.m */; };
+		04453C81224C97810079B112 /* FQVedioContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04453C80224C97810079B112 /* FQVedioContentView.xib */; };
+		047164E4225306C40017D211 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047164E3225306C40017D211 /* Login.storyboard */; };
+		047164E7225310F10017D211 /* FQLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164E6225310F10017D211 /* FQLoginVC.m */; };
+		047164EA225332CA0017D211 /* FQFindPSWVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164E9225332CA0017D211 /* FQFindPSWVC.m */; };
+		047164F622533E360017D211 /* UITextField+BizExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164EC22533E360017D211 /* UITextField+BizExtension.m */; };
+		047164F722533E360017D211 /* NSString+TRHString.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164ED22533E360017D211 /* NSString+TRHString.m */; };
+		047164F822533E360017D211 /* UIResponder+BizExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164EE22533E360017D211 /* UIResponder+BizExtension.m */; };
+		047164F922533E360017D211 /* NSDate+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164F322533E360017D211 /* NSDate+Extend.m */; };
+		047164FA22533E360017D211 /* BizTextFieldDelegateHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164F422533E360017D211 /* BizTextFieldDelegateHook.m */; };
+		047164FD225343A00017D211 /* FQRegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 047164FC225343A00017D211 /* FQRegistVC.m */; };
+		0471650122534B2E0017D211 /* CoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0471650022534B2E0017D211 /* CoreManager.m */; };
+		04716507225350D70017D211 /* CoreManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 04716506225350D70017D211 /* CoreManager+Login.m */; };
+		0471650B22535F4F0017D211 /* FQUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0471650A22535F4F0017D211 /* FQUserModel.m */; };
 		04D612BD223F76EC007E7B00 /* FQCommunityBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D612BB223F76EC007E7B00 /* FQCommunityBaseCell.m */; };
 		04D612BE223F76EC007E7B00 /* FQCommunityBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D612BC223F76EC007E7B00 /* FQCommunityBaseCell.xib */; };
 		04D612C2223F78F2007E7B00 /* FQCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D612C1223F78F2007E7B00 /* FQCustomButton.m */; };
-		04DE44BD223B4E4300132AE5 /* UIResponder+BizExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE44BC223B4E4200132AE5 /* UIResponder+BizExtension.m */; };
 		536DFAA92238F1EE00F9ED73 /* FQMyStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 536DFAA82238F1EE00F9ED73 /* FQMyStoryboard.storyboard */; };
 		536DFAAC2238F47D00F9ED73 /* FQMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 536DFAAB2238F47D00F9ED73 /* FQMyViewController.m */; };
 		53EA62B122389ECD00BF1FB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EA62B022389ECD00BF1FB9 /* AppDelegate.m */; };
@@ -175,13 +188,42 @@
 		04453C2A224BC2760079B112 /* FQLiveHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQLiveHeaderView.m; sourceTree = "<group>"; };
 		04453C2C224BC4620079B112 /* FQLiveDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQLiveDetailVC.h; sourceTree = "<group>"; };
 		04453C2D224BC4620079B112 /* FQLiveDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQLiveDetailVC.m; sourceTree = "<group>"; };
+		04453C73224C6C7A0079B112 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		04453C75224C6CAE0079B112 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		04453C77224C70F20079B112 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		04453C79224C71020079B112 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		04453C7B224C710C0079B112 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		04453C7D224C976E0079B112 /* FQVedioContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQVedioContentView.h; sourceTree = "<group>"; };
+		04453C7E224C976E0079B112 /* FQVedioContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQVedioContentView.m; sourceTree = "<group>"; };
+		04453C80224C97810079B112 /* FQVedioContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FQVedioContentView.xib; sourceTree = "<group>"; };
+		047164E3225306C40017D211 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		047164E5225310F10017D211 /* FQLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQLoginVC.h; sourceTree = "<group>"; };
+		047164E6225310F10017D211 /* FQLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQLoginVC.m; sourceTree = "<group>"; };
+		047164E8225332CA0017D211 /* FQFindPSWVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQFindPSWVC.h; sourceTree = "<group>"; };
+		047164E9225332CA0017D211 /* FQFindPSWVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQFindPSWVC.m; sourceTree = "<group>"; };
+		047164EC22533E360017D211 /* UITextField+BizExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BizExtension.m"; sourceTree = "<group>"; };
+		047164ED22533E360017D211 /* NSString+TRHString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TRHString.m"; sourceTree = "<group>"; };
+		047164EE22533E360017D211 /* UIResponder+BizExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+BizExtension.m"; sourceTree = "<group>"; };
+		047164EF22533E360017D211 /* BizTextFieldDelegateHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizTextFieldDelegateHook.h; sourceTree = "<group>"; };
+		047164F022533E360017D211 /* NSDate+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extend.h"; sourceTree = "<group>"; };
+		047164F122533E360017D211 /* NSString+TRHString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TRHString.h"; sourceTree = "<group>"; };
+		047164F222533E360017D211 /* UITextField+BizExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BizExtension.h"; sourceTree = "<group>"; };
+		047164F322533E360017D211 /* NSDate+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extend.m"; sourceTree = "<group>"; };
+		047164F422533E360017D211 /* BizTextFieldDelegateHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BizTextFieldDelegateHook.m; sourceTree = "<group>"; };
+		047164F522533E360017D211 /* UIResponder+BizExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+BizExtension.h"; sourceTree = "<group>"; };
+		047164FB225343A00017D211 /* FQRegistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQRegistVC.h; sourceTree = "<group>"; };
+		047164FC225343A00017D211 /* FQRegistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQRegistVC.m; sourceTree = "<group>"; };
+		047164FF22534B2E0017D211 /* CoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreManager.h; sourceTree = "<group>"; };
+		0471650022534B2E0017D211 /* CoreManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreManager.m; sourceTree = "<group>"; };
+		04716505225350D70017D211 /* CoreManager+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreManager+Login.h"; sourceTree = "<group>"; };
+		04716506225350D70017D211 /* CoreManager+Login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CoreManager+Login.m"; sourceTree = "<group>"; };
+		0471650922535F4F0017D211 /* FQUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQUserModel.h; sourceTree = "<group>"; };
+		0471650A22535F4F0017D211 /* FQUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQUserModel.m; sourceTree = "<group>"; };
 		04D612BA223F76EC007E7B00 /* FQCommunityBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQCommunityBaseCell.h; sourceTree = "<group>"; };
 		04D612BB223F76EC007E7B00 /* FQCommunityBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQCommunityBaseCell.m; sourceTree = "<group>"; };
 		04D612BC223F76EC007E7B00 /* FQCommunityBaseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FQCommunityBaseCell.xib; sourceTree = "<group>"; };
 		04D612C0223F78F2007E7B00 /* FQCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FQCustomButton.h; sourceTree = "<group>"; };
 		04D612C1223F78F2007E7B00 /* FQCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FQCustomButton.m; sourceTree = "<group>"; };
-		04DE44BB223B4E4200132AE5 /* UIResponder+BizExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+BizExtension.h"; sourceTree = "<group>"; };
-		04DE44BC223B4E4200132AE5 /* UIResponder+BizExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+BizExtension.m"; sourceTree = "<group>"; };
 		46EE136F38F746F7D5E2D760 /* libPods-Fanqie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fanqie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C253FE879196397E09339A1 /* Pods-Fanqie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fanqie.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fanqie/Pods-Fanqie.release.xcconfig"; sourceTree = "<group>"; };
 		536DFAA72238E9CC00F9ED73 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -304,6 +346,58 @@
 			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
+		047164E22253069B0017D211 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				047164E3225306C40017D211 /* Login.storyboard */,
+				047164E5225310F10017D211 /* FQLoginVC.h */,
+				047164E6225310F10017D211 /* FQLoginVC.m */,
+				047164FB225343A00017D211 /* FQRegistVC.h */,
+				047164FC225343A00017D211 /* FQRegistVC.m */,
+				047164E8225332CA0017D211 /* FQFindPSWVC.h */,
+				047164E9225332CA0017D211 /* FQFindPSWVC.m */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		047164EB22533E360017D211 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				047164EC22533E360017D211 /* UITextField+BizExtension.m */,
+				047164ED22533E360017D211 /* NSString+TRHString.m */,
+				047164EE22533E360017D211 /* UIResponder+BizExtension.m */,
+				047164EF22533E360017D211 /* BizTextFieldDelegateHook.h */,
+				047164F022533E360017D211 /* NSDate+Extend.h */,
+				047164F122533E360017D211 /* NSString+TRHString.h */,
+				047164F222533E360017D211 /* UITextField+BizExtension.h */,
+				047164F322533E360017D211 /* NSDate+Extend.m */,
+				047164F422533E360017D211 /* BizTextFieldDelegateHook.m */,
+				047164F522533E360017D211 /* UIResponder+BizExtension.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		047164FE225349200017D211 /* CoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				0471650822535EEB0017D211 /* Object */,
+				047164FF22534B2E0017D211 /* CoreManager.h */,
+				0471650022534B2E0017D211 /* CoreManager.m */,
+				04716505225350D70017D211 /* CoreManager+Login.h */,
+				04716506225350D70017D211 /* CoreManager+Login.m */,
+			);
+			path = CoreManager;
+			sourceTree = "<group>";
+		};
+		0471650822535EEB0017D211 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				0471650922535F4F0017D211 /* FQUserModel.h */,
+				0471650A22535F4F0017D211 /* FQUserModel.m */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
 		04D612BF223F78D7007E7B00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +410,11 @@
 		33B412805F7C5339D8755C55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04453C7B224C710C0079B112 /* AudioToolbox.framework */,
+				04453C79224C71020079B112 /* AudioUnit.framework */,
+				04453C77224C70F20079B112 /* UIKit.framework */,
+				04453C75224C6CAE0079B112 /* AVKit.framework */,
+				04453C73224C6C7A0079B112 /* AVFoundation.framework */,
 				46EE136F38F746F7D5E2D760 /* libPods-Fanqie.a */,
 			);
 			name = Frameworks;
@@ -346,6 +445,8 @@
 		53EA62AE22389ECD00BF1FB9 /* Fanqie */ = {
 			isa = PBXGroup;
 			children = (
+				047164FE225349200017D211 /* CoreManager */,
+				047164E22253069B0017D211 /* 登录 */,
 				53EA62ED2238B27C00BF1FB9 /* 社区 */,
 				53EA62E52238B27B00BF1FB9 /* 视频 */,
 				53EA62E92238B27B00BF1FB9 /* 我的 */,
@@ -384,9 +485,8 @@
 		53EA62E12238AC3100BF1FB9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				047164EB22533E360017D211 /* Category */,
 				04D612BF223F78D7007E7B00 /* Views */,
-				04DE44BB223B4E4200132AE5 /* UIResponder+BizExtension.h */,
-				04DE44BC223B4E4200132AE5 /* UIResponder+BizExtension.m */,
 				53EA62E22238ACB700BF1FB9 /* FQRootViewController.h */,
 				53EA62E32238ACB700BF1FB9 /* FQRootViewController.m */,
 			);
@@ -422,6 +522,9 @@
 		53EA62E82238B27B00BF1FB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04453C7D224C976E0079B112 /* FQVedioContentView.h */,
+				04453C7E224C976E0079B112 /* FQVedioContentView.m */,
+				04453C80224C97810079B112 /* FQVedioContentView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -694,9 +797,11 @@
 				0438A5A1223A3C0C009DBE95 /* HomeStoryboard.storyboard in Resources */,
 				04453C28224B74B60079B112 /* FQLiveCell.xib in Resources */,
 				04301B9122412AA9002F157A /* FQMessageDetailSectionHeader.xib in Resources */,
+				047164E4225306C40017D211 /* Login.storyboard in Resources */,
 				04301B8F2240EECB002F157A /* FQMessageDetailClickButtonView.xib in Resources */,
 				04010C022243309F006ACD68 /* FQUserCell.xib in Resources */,
 				04010BEB2242210F006ACD68 /* TZImagePickerController.bundle in Resources */,
+				04453C81224C97810079B112 /* FQVedioContentView.xib in Resources */,
 				04453C23224B532E0079B112 /* FQLiveStoryboard.storyboard in Resources */,
 				04010BF522424C56006ACD68 /* FQSearchHeaderView.xib in Resources */,
 				04D612BE223F76EC007E7B00 /* FQCommunityBaseCell.xib in Resources */,
@@ -747,6 +852,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Fanqie/Pods-Fanqie-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/JPVideoPlayer/JPVideoPlayer/JPVideoPlayer.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
@@ -754,6 +860,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JPVideoPlayer.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TencentOpenApi_IOS_Bundle.bundle",
@@ -779,6 +886,7 @@
 				04010BE52242210F006ACD68 /* TZAssetCell.m in Sources */,
 				04010BE72242210F006ACD68 /* TZAssetModel.m in Sources */,
 				04010B492241E9A6006ACD68 /* FQPublishVC.m in Sources */,
+				047164F622533E360017D211 /* UITextField+BizExtension.m in Sources */,
 				53EA62E42238ACB700BF1FB9 /* FQRootViewController.m in Sources */,
 				0438A5A7223A58B9009DBE95 /* FQHomeContentView.m in Sources */,
 				04010BC322421CA8006ACD68 /* SJSheetView.m in Sources */,
@@ -789,33 +897,43 @@
 				04301B8A2240C62B002F157A /* FQMessageDetailTableHeadView.m in Sources */,
 				0438A5A4223A465A009DBE95 /* FQSearchViewController.m in Sources */,
 				04D612C2223F78F2007E7B00 /* FQCustomButton.m in Sources */,
+				0471650122534B2E0017D211 /* CoreManager.m in Sources */,
 				04010BC022421CA8006ACD68 /* SJSheetFoot.m in Sources */,
+				047164F922533E360017D211 /* NSDate+Extend.m in Sources */,
 				04301B862240C249002F157A /* FQMessageDetailController.m in Sources */,
 				04010BFD22427D3A006ACD68 /* FQSearchRecordModel.m in Sources */,
 				04453C27224B74B60079B112 /* FQLiveCell.m in Sources */,
 				04010BEA2242210F006ACD68 /* TZPhotoPreviewController.m in Sources */,
+				047164F722533E360017D211 /* NSString+TRHString.m in Sources */,
 				53EA62BF22389ED000BF1FB9 /* main.m in Sources */,
 				04010BEF2242210F006ACD68 /* TZPhotoPreviewCell.m in Sources */,
 				04010BED2242210F006ACD68 /* TZImageManager.m in Sources */,
 				0438A599223A04BF009DBE95 /* FQCountSafeTableViewController.m in Sources */,
+				047164FA22533E360017D211 /* BizTextFieldDelegateHook.m in Sources */,
 				04010BF02242210F006ACD68 /* TZImagePickerController.m in Sources */,
 				04301B9922413308002F157A /* FQMessageDetailSectionHeader.m in Sources */,
 				04453C2E224BC4620079B112 /* FQLiveDetailVC.m in Sources */,
+				047164FD225343A00017D211 /* FQRegistVC.m in Sources */,
 				0438A596223A0358009DBE95 /* FQSettingTableViewController.m in Sources */,
+				04716507225350D70017D211 /* CoreManager+Login.m in Sources */,
 				04010BEE2242210F006ACD68 /* TZPhotoPickerController.m in Sources */,
 				04010BE62242210F006ACD68 /* TZVideoPlayerController.m in Sources */,
 				04010BE82242210F006ACD68 /* NSBundle+TZImagePicker.m in Sources */,
 				04010BEC2242210F006ACD68 /* TZProgressView.m in Sources */,
 				53EA62FD2238B2EA00BF1FB9 /* FQVideoViewController.m in Sources */,
 				04010BC122421CA8006ACD68 /* SJSheetHead.m in Sources */,
-				04DE44BD223B4E4300132AE5 /* UIResponder+BizExtension.m in Sources */,
 				04453C2B224BC2760079B112 /* FQLiveHeaderView.m in Sources */,
 				04010BE92242210F006ACD68 /* UIView+Layout.m in Sources */,
 				53EA62B122389ECD00BF1FB9 /* AppDelegate.m in Sources */,
+				04453C7F224C976E0079B112 /* FQVedioContentView.m in Sources */,
 				04010C012243309F006ACD68 /* FQUserCell.m in Sources */,
+				047164EA225332CA0017D211 /* FQFindPSWVC.m in Sources */,
 				04010BF12242210F006ACD68 /* TZLocationManager.m in Sources */,
 				04010BF922427AB0006ACD68 /* FQSearchRecordCell.m in Sources */,
+				0471650B22535F4F0017D211 /* FQUserModel.m in Sources */,
 				04301B952241300C002F157A /* FQMessageDetailCell.m in Sources */,
+				047164F822533E360017D211 /* UIResponder+BizExtension.m in Sources */,
+				047164E7225310F10017D211 /* FQLoginVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

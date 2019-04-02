@@ -19,6 +19,12 @@ alpha:1.0]
 #import <Masonry.h>
 #import <ReactiveCocoa.h>
 #import "UIResponder+BizExtension.h"
+#import "UITextField+BizExtension.h"
+#import "BizTextFieldDelegateHook.h"
+
+#define UIColorLoginButtonAble UIColorFromRGB(0xff5252)
+#define UIColorLoginButtonDisAble UIColorFromRGB(0xcecece)
+
 #define PingFangSC(a)         [UIFont fontWithName:@"PingFangSC-Regular" size:a]
 #define PingFangSCM(a)         [UIFont fontWithName:@"PingFangSC-Medium" size:a]
 #define iPhone_Height       [[UIScreen mainScreen ] bounds ].size.height

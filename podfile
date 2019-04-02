@@ -12,4 +12,5 @@ target 'Fanqie' do
  pod 'Masonry'
  pod 'Realm'
  pod 'SDCycleScrollView','~> 1.75'
+ pod 'JPVideoPlayer'
 end
