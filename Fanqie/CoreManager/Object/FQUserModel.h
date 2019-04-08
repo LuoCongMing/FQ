@@ -7,12 +7,13 @@
 //
 
 #import "RLMObject.h"
+#import <Realm.h>
 
 @interface FQUserModel : RLMObject
 
 @property (nonatomic,copy)NSString*username;
 @property (nonatomic,assign)int userid;
-
+@property (nonatomic,copy)NSString*user_token;
 +(instancetype)share;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "FQUserModel.h"
-#import <Realm.h>
+
 
 @implementation FQUserModel
 +(instancetype)share{

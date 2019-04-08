@@ -28,6 +28,9 @@
     [textField routerEventWithName:@"endEditing" dataInfo:nil];
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (self.textfieldReturn) {
+        self.textfieldReturn(textField.text);
+    }
     [textField resignFirstResponder];
     return YES;
 }

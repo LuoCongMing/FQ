@@ -9,13 +9,15 @@
 #import "FQLoginVC.h"
 #import <ReactiveCocoa.h>
 #import "NSString+TRHString.h"
+#import "CoreManager+Login.h"
 
-@interface FQLoginVC ()
+@interface FQLoginVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *login;
 @property (weak, nonatomic) IBOutlet UIButton *countLoginButton;
+@property (nonatomic,strong)CoreManager*task;
 
 @end
 
@@ -38,6 +40,7 @@
     _passwordTextfield.delegate = self;
     _passwordTextfield.bizType = BizTextFieldTypeWithoutCN;
     
+    self.task = [[CoreManager alloc]init];
     [self bind];
     
     
@@ -68,9 +71,19 @@
        return @(set);
     }];
     self.login.rac_command = [[RACCommand alloc]initWithEnabled:enableSignal signalBlock:^RACSignal *(id input) {
-        
+        @strongify(self)
         //login
+        MBProgressHUD*hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
+        [self.task FQLoginWithPhone:self.phoneTextfield.text Password:self.passwordTextfield.text CompleteBlock:^(id success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES];
+                 [self dismissViewControllerAnimated:YES completion:nil];
+                
+            });
+        } FaildBlock:^(id error) {
+            [hud hideAnimated:YES];
+        }];
         
         
         return [RACSignal empty];

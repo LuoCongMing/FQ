@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^FQPulicComplete)(void);
 @interface FQPublishVC : UIViewController
-
+@property (nonatomic,copy)FQPulicComplete pulicComplete;
 @end

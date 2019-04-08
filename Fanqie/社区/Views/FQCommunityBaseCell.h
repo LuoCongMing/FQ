@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FQCustomButton.h"
+#import "FQCommunityIndexModel.h"
+//#import <MWPhotoBrowser.h>
 static NSString*fq_allCharacter = @"fq_allCharacter";
 static NSString*fq_commentDetail = @"fq_commentDetail";
+static NSString*fq_photoBrowser = @"fq_photoBrowser";
 @interface FQCommunityBaseCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *nickName;
@@ -21,9 +24,9 @@ static NSString*fq_commentDetail = @"fq_commentDetail";
 @property (weak, nonatomic) IBOutlet FQCustomButton *likeButton;
 
 ///纯文本
--(void)updateCharacterContentWithModel:(id)model;
+-(void)updateCharacterContentWithModel:(FQCommunityIndexModel*)model;
 ///图片
--(void)updatePictureContentWithModel:(id)model;
+-(void)updatePictureContentWithModel:(FQCommunityIndexModel*)model;
 ///视频
--(void)updateVedioContentWithModel:(id)model;
+-(void)updateVedioContentWithModel:(FQCommunityIndexModel*)model;
 @end

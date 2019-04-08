@@ -20,8 +20,8 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor blackColor];
-//    self.window.rootViewController = [[FQRootViewController alloc]init];
-    self.window.rootViewController = [UIStoryboard storyboardWithName:@"Login" bundle:nil].instantiateInitialViewController;
+    self.window.rootViewController = [[FQRootViewController alloc]init];
+//    self.window.rootViewController = [UIStoryboard storyboardWithName:@"Login" bundle:nil].instantiateInitialViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

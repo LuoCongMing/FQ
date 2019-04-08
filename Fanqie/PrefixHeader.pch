@@ -21,6 +21,8 @@ alpha:1.0]
 #import "UIResponder+BizExtension.h"
 #import "UITextField+BizExtension.h"
 #import "BizTextFieldDelegateHook.h"
+#import <MBProgressHUD.h>
+#import "FQUserModel.h"
 
 #define UIColorLoginButtonAble UIColorFromRGB(0xff5252)
 #define UIColorLoginButtonDisAble UIColorFromRGB(0xcecece)

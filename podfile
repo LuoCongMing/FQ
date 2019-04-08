@@ -13,4 +13,8 @@ target 'Fanqie' do
  pod 'Realm'
  pod 'SDCycleScrollView','~> 1.75'
  pod 'JPVideoPlayer'
+ pod 'Qiniu', '~> 7.1'
+ pod 'TZImagePickerController'
+# pod 'MWPhotoBrowser'
+ pod 'QBImagePickerController'
 end

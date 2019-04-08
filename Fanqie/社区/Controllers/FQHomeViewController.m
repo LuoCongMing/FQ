@@ -10,9 +10,15 @@
 
 #import "FQHomeViewController.h"
 #import "FQHomeContentView.h"
+#import "FQPublishVC.h"
+
 
 @interface FQHomeViewController ()
+
 @property(nonatomic,strong)UIButton*selectButton;
+@property (weak, nonatomic) IBOutlet UIView *headerSeachView;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *recommend;
 //关注
 @property (weak, nonatomic) IBOutlet UIButton *attention;
@@ -23,6 +29,9 @@
 @property (nonatomic,assign) FQHomeType type;
 //
 @property (weak, nonatomic) IBOutlet FQHomeContentView *contentView;
+
+@property (nonatomic,strong)CoreManager*task;
+
 
 
 @end
@@ -40,24 +49,39 @@
     [self initData];
 }
 -(void)initData{
-    _type = FQHomeTypeRecommend;
+    [self.contentView initData];
     
 }
+
 -(void)initUI{
     _selectButton = _recommend;
     _recommend.selected = YES;
     [_recommend setTitleColor:RedFontColor forState:UIControlStateSelected];
     [_attention setTitleColor:RedFontColor forState:UIControlStateSelected];
-
     
+//    UISearchBar *searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, iPhone_Width-44, 44)];
+//    searchbar.barStyle = UISearchBarStyleMinimal;
+//    [_headerSeachView addSubview:searchbar];
+    
+    
+    UIButton*postButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    postButton.frame = CGRectMake(iPhone_Width-44, 0, 44, 44);
+    [postButton setImage:[UIImage imageNamed:@"添加"] forState:UIControlStateNormal];
+    @weakify(self)
+    [[postButton rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
+        @strongify(self)
+        if ([FQUserModel share].user_token.length>0) {
+            [self performSegueWithIdentifier:@"post" sender:nil];
+        }else{
+            [self.task fq_LoginFirst];
+        }
+        
+    }];
+    [_headerSeachView addSubview:postButton];
 }
 
-///发布内容
-- (IBAction)publish:(id)sender {
-    
-    
-    
-}
+
+
 
 - (IBAction)headButtonTypeClick:(UIButton*)sender {
     _selectButton.selected = NO;
@@ -95,10 +119,27 @@
         //跳转到消息评论页面
         [self performSegueWithIdentifier:@"messageDetail" sender:nil];
     }
+    if ([eventName isEqualToString:fq_photoBrowser]) {
+        UIViewController*browser = dataInfo[@"vc"];
+        // Present
+        [self.navigationController pushViewController:browser animated:YES];
+    }
 }
+
+- (IBAction)search:(id)sender {
+    
+    [self performSegueWithIdentifier:@"search" sender:nil];
+}
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    
+    if ([segue.identifier isEqualToString:@"post"]) {
+        FQPublishVC*public = segue.destinationViewController;
+        public.pulicComplete = ^{
+            [self.contentView.recommandTable.mj_header beginRefreshing];
+        };
+    }
 }
 
 @end

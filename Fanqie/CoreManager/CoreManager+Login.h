@@ -7,6 +7,7 @@
 //
 
 #import "CoreManager.h"
+#import "FQUserModel.h"
 
 @interface CoreManager (Login)
 
@@ -27,8 +28,7 @@
  @param code 验证码
  @param password 密码
  @param repeatpassword 重复密码
- @param Tusername 邀请码
- @param faild
+
  */
 -(void)FQRegistCodeWithUserName:(NSString*)username
                            code:(int)code
@@ -37,4 +37,31 @@
                  Repeatpassword:(NSString*)repeatpassword
                   CompleteBlock:(FQCompleteBlock)complete
                      FaildBlock:(FQFaildBlock)faild;
+
+
+/**
+ 登录
+
+ @param phone 手机号
+ @param password 密码
+
+ */
+-(void)FQLoginWithPhone:(NSString*)phone
+               Password:(NSString*)password
+          CompleteBlock:(FQCompleteBlock)complete
+             FaildBlock:(FQFaildBlock)faild;
+
+
+/**
+ 找回密码
+ */
+-(void)fq_FindPswWithPhone:(NSString*)phone
+                      Code:(NSString*)code
+                  Password:(NSString*)password
+            RepeatPassword:(NSString*)repeatpassword
+                CompleteBlock:(FQCompleteBlock)complete
+                   FaildBlock:(FQFaildBlock)faild;
+
+
+
 @end

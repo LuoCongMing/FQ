@@ -14,7 +14,7 @@ static NSString *host = @"http://39.98.196.183:80/";
 
 typedef void(^FQCompleteBlock)(id success);
 
-typedef void(^FQFaildBlock)(id faild);
+typedef void(^FQFaildBlock)(id error);
 
 @interface CoreManager : NSObject
 @property (nonatomic,copy)FQCompleteBlock completeBlock;
@@ -23,5 +23,10 @@ typedef void(^FQFaildBlock)(id faild);
 @property (nonatomic,strong)AFHTTPSessionManager*manager;
 
 -(void)PostRequestWithPara:(NSDictionary*)para Path:(NSString*)path CompleteBlock:(FQCompleteBlock)complete FaildBlock:(FQFaildBlock)faild;
+
+-(void)getRequestWithPara:(NSDictionary*)para Path:(NSString*)path CompleteBlock:(FQCompleteBlock)complete FaildBlock:(FQFaildBlock)faild;
+
+///跳转到登录界面
+-(void)fq_LoginFirst;
 
 @end

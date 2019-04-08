@@ -15,8 +15,11 @@ typedef NS_ENUM(NSInteger,BizTextFieldType){
     BizTextFieldTypeWithoutCN//不能输入中文和表情
     
 };
+
+typedef void(^FQTextFieldReturn)(NSString*text);
 @interface BizTextFieldDelegateHook : NSObject<UITextFieldDelegate>
 @property(nonatomic,assign)int bizMaxLength;//最大长度
 @property(nonatomic,assign)BizTextFieldType bizType;
+@property(nonatomic,copy)FQTextFieldReturn textfieldReturn;
 -(void)textFieldDidChange:(UITextField*)textfield;
 @end

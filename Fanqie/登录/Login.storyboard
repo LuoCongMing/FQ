@@ -54,7 +54,7 @@
                                     <constraint firstAttribute="width" constant="19" id="U4k-pm-VWk"/>
                                     <constraint firstAttribute="height" constant="19" id="osw-nw-feX"/>
                                 </constraints>
-                                <state key="normal" image="login_cancel"/>
+                                <state key="normal" image="关  闭 "/>
                                 <connections>
                                     <action selector="cancel:" destination="beK-cj-iyN" eventType="touchUpInside" id="klb-A7-Wga"/>
                                 </connections>
@@ -130,7 +130,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="286" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUh-5W-OVf">
                                                 <rect key="frame" x="291" y="17" width="25" height="15"/>
@@ -293,7 +293,7 @@
                                             <constraint firstAttribute="height" constant="19" id="d8I-ag-Fhg"/>
                                             <constraint firstAttribute="width" constant="19" id="eyr-UQ-jth"/>
                                         </constraints>
-                                        <state key="normal" image="login_cancel"/>
+                                        <state key="normal" image="关  闭 "/>
                                         <connections>
                                             <action selector="cancel:" destination="Q3f-Dx-8ij" eventType="touchUpInside" id="odY-Kj-uki"/>
                                             <action selector="cancel:" destination="beK-cj-iyN" eventType="touchUpInside" id="w2S-h5-mCx"/>
@@ -625,7 +625,7 @@
         <!--个人信息-->
         <scene sceneID="8ef-AJ-o6X">
             <objects>
-                <viewController id="TOM-Nt-txf" sceneMemberID="viewController">
+                <viewController id="TOM-Nt-txf" customClass="FQRegistInfoVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x5T-hd-sXX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -633,8 +633,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqb-Yk-tcH">
                                 <rect key="frame" x="0.0" y="64" width="375" height="220"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0UY-2f-qwI">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="图层 1" translatesAutoresizingMaskIntoConstraints="NO" id="0UY-2f-qwI">
                                         <rect key="frame" x="137" y="30" width="100" height="100"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="0UY-2f-qwI" secondAttribute="height" multiplier="1:1" id="e1u-f0-0hg"/>
                                             <constraint firstAttribute="width" constant="100" id="z5V-hD-YzK"/>
@@ -645,6 +646,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YUP-qB-nzP" appends="YES" id="g0m-zc-CdK"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击修改头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCG-vC-eoZ">
                                         <rect key="frame" x="151.5" y="155" width="72" height="17"/>
@@ -677,12 +681,41 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-9e-HZ6">
+                                                <rect key="frame" x="85" y="15" width="50" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="0Ea-oI-jtp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="男" image="椭圆 4">
+                                                    <color key="titleColor" red="0.49019607843137253" green="0.49803921568627452" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="对(1)"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWh-m4-nBh">
+                                                <rect key="frame" x="165" y="15" width="50" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="lAI-vg-T5x"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="女" image="椭圆 4">
+                                                    <color key="titleColor" red="0.49019607840000001" green="0.49803921569999998" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="对(1)"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="WuS-T0-jPY" firstAttribute="centerY" secondItem="Efm-Xu-nL3" secondAttribute="centerY" id="432-oe-mpQ"/>
+                                            <constraint firstItem="xWh-m4-nBh" firstAttribute="leading" secondItem="PbZ-9e-HZ6" secondAttribute="trailing" constant="30" id="46z-lN-yhI"/>
+                                            <constraint firstItem="xWh-m4-nBh" firstAttribute="centerY" secondItem="PbZ-9e-HZ6" secondAttribute="centerY" id="IYm-dg-PZe"/>
                                             <constraint firstAttribute="height" constant="50" id="Xmd-0D-mQk"/>
                                             <constraint firstItem="WuS-T0-jPY" firstAttribute="leading" secondItem="Efm-Xu-nL3" secondAttribute="leading" id="c1E-kr-fSJ"/>
+                                            <constraint firstItem="PbZ-9e-HZ6" firstAttribute="centerY" secondItem="WuS-T0-jPY" secondAttribute="centerY" id="gjI-1r-FbK"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vkc-e6-dLP">
@@ -783,6 +816,7 @@
                             <constraint firstItem="kWv-BX-Ifx" firstAttribute="leading" secondItem="w6t-Py-4wb" secondAttribute="leading" id="HCd-eP-yMp"/>
                             <constraint firstItem="kWv-BX-Ifx" firstAttribute="top" secondItem="nqb-Yk-tcH" secondAttribute="bottom" constant="8" id="JtB-MM-bPi"/>
                             <constraint firstItem="PLJ-Ei-myP" firstAttribute="top" secondItem="nqb-Yk-tcH" secondAttribute="bottom" constant="10" id="LKT-B3-QiU"/>
+                            <constraint firstItem="PbZ-9e-HZ6" firstAttribute="leading" secondItem="Wjm-cK-Op0" secondAttribute="leading" id="csF-eD-7zs"/>
                             <constraint firstItem="Efm-Xu-nL3" firstAttribute="top" secondItem="PLJ-Ei-myP" secondAttribute="bottom" id="dgC-Ut-OqF"/>
                             <constraint firstItem="w6t-Py-4wb" firstAttribute="trailing" secondItem="nqb-Yk-tcH" secondAttribute="trailing" id="ezm-8M-0Q5"/>
                             <constraint firstItem="nqb-Yk-tcH" firstAttribute="leading" secondItem="w6t-Py-4wb" secondAttribute="leading" id="gdV-Sc-0pX"/>
@@ -802,10 +836,19 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="iconImageView" destination="0UY-2f-qwI" id="mHZ-MI-bWi"/>
+                        <outlet property="nickNameTextField" destination="Wjm-cK-Op0" id="rzo-si-h0Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A1q-pR-tk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YUP-qB-nzP">
+                    <connections>
+                        <action selector="selectImageIcon:" destination="TOM-Nt-txf" id="4Ac-7r-kO1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2138" y="161"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="160.56971514242881"/>
         </scene>
         <!--找回密码-->
         <scene sceneID="DiG-2t-1TZ">
@@ -894,9 +937,6 @@
                                                 <state key="normal" title="获取验证码">
                                                     <color key="titleColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="eyesClick:" destination="beK-cj-iyN" eventType="touchUpInside" id="hSC-Tx-lp9"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -930,9 +970,6 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="nextClick:" destination="M6O-Th-BtY" eventType="touchUpInside" id="0Uf-hb-SHk"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -975,7 +1012,7 @@
                                                 <rect key="frame" x="85" y="0.0" width="234" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1006,7 +1043,7 @@
                                                 <rect key="frame" x="85" y="0.0" width="234" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzP-3R-ejg">
                                                 <rect key="frame" x="0.0" y="14" width="85" height="22.5"/>
@@ -1047,9 +1084,6 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="nextClick:" destination="M6O-Th-BtY" eventType="touchUpInside" id="8D0-qY-svM"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1092,7 +1126,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="configButton" destination="91R-3y-XoQ" id="zGu-E7-n7f"/>
+                        <outlet property="firstStepView" destination="xNo-Vw-eth" id="Z89-yt-Pve"/>
+                        <outlet property="nextStepButton" destination="QvQ-Tn-drG" id="lDK-vT-krh"/>
+                        <outlet property="nextStepView" destination="YRq-Qi-kqG" id="6gE-Xs-Kjk"/>
                         <outlet property="phoneTextfield" destination="muo-Vu-UW5" id="Agl-vj-IRO"/>
+                        <outlet property="pswTextfield" destination="4K6-BU-JiG" id="GAD-m4-xEW"/>
+                        <outlet property="repeatPswTextfield" destination="bAI-PJ-Dm6" id="6S6-4q-8YO"/>
                         <outlet property="verifyCodeButton" destination="1uf-eH-7h2" id="wmI-u0-jrQ"/>
                         <outlet property="verifyCodeTextfield" destination="ycc-GJ-Hrs" id="EEF-9Z-LLR"/>
                     </connections>
@@ -1103,9 +1143,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="login_cancel" width="72" height="72"/>
         <image name="login_logo" width="150" height="114"/>
-        <image name="yanjing" width="50" height="30"/>
-        <image name="返回黑" width="9" height="16"/>
+        <image name="yanjing" width="17" height="10"/>
+        <image name="关  闭 " width="26" height="26"/>
+        <image name="图层 1" width="35" height="35"/>
+        <image name="对(1)" width="13" height="13"/>
+        <image name="椭圆 4" width="13" height="13"/>
+        <image name="返回黑" width="6" height="11"/>
     </resources>
 </document>

@@ -74,14 +74,14 @@ OverrideImplementation(Class targetClass, SEL targetSelector, id (^implementatio
 //    FQLiveViewController*live = [[FQLiveViewController alloc]init];
    
      UINavigationController*homeNavi = [UIStoryboard storyboardWithName:@"HomeStoryboard" bundle:nil].instantiateInitialViewController;
-    homeNavi.tabBarItem = [self tabBarItemWithTitle:@"社区" NormalImage:@"shouye（未选中）" SelectImage:@"shouye（选择）"];
+    homeNavi.tabBarItem = [self tabBarItemWithTitle:@"社区" NormalImage:@"shequ(1)" SelectImage:@"shequ"];
     UINavigationController*videoNavi= [[UINavigationController alloc]initWithRootViewController:video];
-    videoNavi.tabBarItem  = [self tabBarItemWithTitle:@"视频" NormalImage:@"caifu（未选中）" SelectImage:@"caifu（选中）"];
+    videoNavi.tabBarItem  = [self tabBarItemWithTitle:@"视频" NormalImage:@"shipin 拷贝" SelectImage:@"shipin"];
     
     UINavigationController*liveNavi = [UIStoryboard storyboardWithName:@"FQLiveStoryboard" bundle:nil].instantiateInitialViewController;;
-    liveNavi.tabBarItem = [self tabBarItemWithTitle:@"直播" NormalImage:@"touzi（未选中）" SelectImage:@"touzi（选中）"];
+    liveNavi.tabBarItem = [self tabBarItemWithTitle:@"直播" NormalImage:@"zhibo 拷贝" SelectImage:@"zhibo"];
     UINavigationController*myNavi = [UIStoryboard storyboardWithName:@"FQMyStoryboard" bundle:nil].instantiateInitialViewController;
-    myNavi.tabBarItem = [self tabBarItemWithTitle:@"我的" NormalImage:@"wode(未选中）" SelectImage:@"wode(选中）"];
+    myNavi.tabBarItem = [self tabBarItemWithTitle:@"我的" NormalImage:@"wode" SelectImage:@"wode 拷贝"];
     self.viewControllers = @[homeNavi,videoNavi,liveNavi,myNavi];
     [self.tabBar setBarTintColor:[UIColor whiteColor]];
 

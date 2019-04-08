@@ -573,7 +573,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7ED-ar-kyD">
-                        <barButtonItem key="rightBarButtonItem" image="icon_personal_setting" id="OqH-13-ZgT">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="OqH-13-ZgT">
                             <connections>
                                 <segue destination="Lem-Ze-nIY" kind="push" id="ovG-ff-Tfe"/>
                             </connections>
@@ -1056,7 +1056,6 @@
         <image name="icon_my_live" width="72" height="72"/>
         <image name="icon_my_message" width="72" height="72"/>
         <image name="icon_my_thumb" width="72" height="72"/>
-        <image name="icon_personal_setting" width="36" height="36"/>
         <image name="icon_tomato_coin" width="72" height="72"/>
     </resources>
 </document>
