@@ -9,13 +9,15 @@
 #import "FQMessageDetailSectionHeader.h"
 
 @implementation FQMessageDetailSectionHeader
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+///只看楼主
+- (IBAction)louZhuOnly:(id)sender {
+    
 }
-*/
+
+///最新
+- (IBAction)recently:(id)sender {
+    
+}
+
 
 @end

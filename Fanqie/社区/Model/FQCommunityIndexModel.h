@@ -38,6 +38,9 @@
 ///type 1 文字 3视频 2图片
 @property (nonatomic ,assign)int type;
 
+///vediothumb
+@property (nonatomic,strong)UIImage*thubImage;
+
 ///分解出来的图片地址
 @property (nonatomic,strong)NSMutableArray*pictureArray;
 @end

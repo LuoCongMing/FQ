@@ -8,6 +8,7 @@
 
 #import "CoreManager.h"
 #import <MBProgressHUD.h>
+#import <AVFoundation/AVFoundation.h>
 
 
 @implementation CoreManager
@@ -137,4 +138,54 @@
     UIWindow* window = [[[UIApplication sharedApplication] delegate] window];
     return window.rootViewController;
 }
+
++(UIImage *)getThumbnailImage:(NSString *)videoURL
+
+{
+    
+//    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:videoURL] options:nil];
+//
+//    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+//
+//    gen.appliesPreferredTrackTransform = YES;
+//
+//    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+//
+//    NSError *error = nil;
+//
+//    CMTime actualTime;
+//
+//    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+//
+//    UIImage *thumb = [[UIImage alloc] initWithCGImage:image];
+//
+//    CGImageRelease(image);
+//
+//    return thumb;
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoURL] options:nil];
+    NSParameterAssert(asset);
+    AVAssetImageGenerator *assetImageGenerator =[[AVAssetImageGenerator alloc] initWithAsset:asset];
+    assetImageGenerator.appliesPreferredTrackTransform = YES;
+    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
+    CGImageRef thumbnailImageRef = NULL;
+    CFTimeInterval thumbnailImageTime = 0;
+    NSError *thumbnailImageGenerationError = nil;
+    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60)actualTime:NULL error:&thumbnailImageGenerationError];
+    
+    if(!thumbnailImageRef)
+    {
+        NSLog(@"thumbnailImageGenerationError %@",thumbnailImageGenerationError);
+        return nil ;
+    }
+    
+    
+    
+    UIImage*thumbnailImage = thumbnailImageRef ? [[UIImage alloc]initWithCGImage: thumbnailImageRef] : nil;
+    
+    return thumbnailImage;
+   
+}
+
 @end

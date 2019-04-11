@@ -70,12 +70,12 @@ OverrideImplementation(Class targetClass, SEL targetSelector, id (^implementatio
 
 -(void)addVC{
    
-    FQVideoViewController*video = [[FQVideoViewController alloc]init];
+//    FQVideoViewController*video = [[FQVideoViewController alloc]init];
 //    FQLiveViewController*live = [[FQLiveViewController alloc]init];
    
      UINavigationController*homeNavi = [UIStoryboard storyboardWithName:@"HomeStoryboard" bundle:nil].instantiateInitialViewController;
     homeNavi.tabBarItem = [self tabBarItemWithTitle:@"社区" NormalImage:@"shequ(1)" SelectImage:@"shequ"];
-    UINavigationController*videoNavi= [[UINavigationController alloc]initWithRootViewController:video];
+    UINavigationController*videoNavi= [UIStoryboard storyboardWithName:@"FQVideo" bundle:nil].instantiateInitialViewController;
     videoNavi.tabBarItem  = [self tabBarItemWithTitle:@"视频" NormalImage:@"shipin 拷贝" SelectImage:@"shipin"];
     
     UINavigationController*liveNavi = [UIStoryboard storyboardWithName:@"FQLiveStoryboard" bundle:nil].instantiateInitialViewController;;

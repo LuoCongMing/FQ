@@ -66,11 +66,12 @@
             if ([FQUserModel allObjects].count>0) {
                 [[RLMRealm defaultRealm]deleteObject:[FQUserModel allObjects].firstObject];
             }
-            NSDictionary*info = success[@"data"];
+            NSDictionary*info = success[@"info"];
+            NSDictionary*data = info[@"data"];
             FQUserModel * model = [FQUserModel share];
-            model.userid = [info[@"id"] intValue];
-            model.username = info[@"username"];
-            model.user_token = info[@"user_token"];
+            model.userid = [data[@"id"] intValue];
+            model.username = data[@"username"];
+            model.user_token = data[@"user_token"];
             [[RLMRealm defaultRealm]addObject:model];
             [[RLMRealm defaultRealm]commitWriteTransaction];
             

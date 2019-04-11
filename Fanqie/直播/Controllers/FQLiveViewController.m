@@ -7,12 +7,14 @@
 //
 
 #import "FQLiveViewController.h"
-#import <SDCycleScrollView.h>
+//#import <SDCycleScrollView.h>
 #import <Masonry.h>
 #import "FQLiveCell.h"
 #import "FQLiveHeaderView.h"
+#import "CoreManager+Live.h"
+#import "FQLiveDetailVC.h"
 
-@interface FQLiveViewController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface FQLiveViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UIButton *recommondButton;
 @property (weak, nonatomic) IBOutlet UIButton *attentionButton;
@@ -20,7 +22,7 @@
 
 @property (nonatomic,strong)UIButton*selectButton;
 
-@property (nonatomic, strong)SDCycleScrollView *cycle;
+//@property (nonatomic, strong)SDCycleScrollView *cycle;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -30,6 +32,12 @@
 @property (nonatomic,strong)UICollectionView*attentionCollection;
 
 @property (nonatomic,strong)FQLiveHeaderView*headerView;
+
+@property (nonatomic,strong)CoreManager*task;
+
+@property (nonatomic,assign)int page;
+
+@property (nonatomic,strong)NSMutableArray*dataSource;
 
 @end
 
@@ -43,6 +51,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initUI];
+    _task = [[CoreManager alloc]init];
+    _page = 1;
+    _dataSource = [[NSMutableArray alloc]init];
+    [self getRecommandRefreshData];
+}
+
+-(void)getRecommandRefreshData{
+    _dataSource = [[NSMutableArray alloc]init];
+    @weakify(self)
+    [_task fq_LiveBannerCompleteBlock:^(id success) {
+        
+    } FaildBlock:^(id error) {
+        
+    }];
+    
+    [_task fq_LiveRecommendListPage:self.page CompleteBlock:^(id success) {
+        @strongify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.dataSource addObjectsFromArray:success[@"array"]];
+            [self.recommondCollection reloadData];
+        });
+    } FaildBlock:^(id error) {
+        
+    }];
+    
 }
 
 -(void)initUI{
@@ -115,13 +148,20 @@
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 10;
+    return self.dataSource.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FQLiveCell" forIndexPath:indexPath];
+    FQLiveCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FQLiveCell" forIndexPath:indexPath];
+    FQLiveModel*model = self.dataSource[indexPath.row];
+    [cell updateContentWithModel:model];
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FQLiveModel*model = self.dataSource[indexPath.row];
+    [self performSegueWithIdentifier:@"live" sender:model];
+}
 /**
  tag  1 推荐
  tag  2 关注
@@ -151,7 +191,12 @@
     }
     
 }
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"live"]) {
+        FQLiveDetailVC*live = (FQLiveDetailVC*)segue.destinationViewController;
+        live.model = sender;
+    }
+}
 - (IBAction)search:(id)sender {
     
     

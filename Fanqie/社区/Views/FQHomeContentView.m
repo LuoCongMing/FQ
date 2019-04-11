@@ -68,7 +68,7 @@
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
-            if ([success[@"page"] intValue]==1) {
+            if ([success[@"total"] intValue]<=1) {
                 [self.recommandTable.mj_footer setHidden:YES];
             }else{
                 [self.recommandTable.mj_footer setHidden:NO];
@@ -87,7 +87,7 @@
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
-            if ([success[@"page"] intValue]==1) {
+            if ([success[@"total"] intValue]<=1) {
                 [self.attentionTable.mj_footer setHidden:YES];
             }else{
                 [self.attentionTable.mj_footer setHidden:NO];
@@ -110,7 +110,7 @@
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if ([success[@"page"] intValue]<=self.recommendPage) {
+            if ([success[@"total"] intValue]<=self.recommendPage) {
                 [self.recommandTable.mj_footer setHidden:YES];
             }else{
                 [self.recommandTable.mj_footer setHidden:NO];
@@ -143,7 +143,7 @@
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if ([success[@"page"] intValue]<=self.recommendPage) {
+            if ([success[@"page"] intValue]<=self.attentionPage) {
                 [self.attentionTable.mj_footer setHidden:YES];
             }else{
                 [self.attentionTable.mj_footer setHidden:NO];
@@ -154,8 +154,8 @@
             }else{
                 [self.attentionTable.mj_footer endRefreshing];
             }
-            [self.recommendArray addObjectsFromArray:success[@"array"]];
-            [self.recommandTable reloadData];
+            [self.attentionArray addObjectsFromArray:success[@"array"]];
+            [self.attentionTable reloadData];
         });
         
     } FaildBlock:^(id error) {
@@ -266,11 +266,11 @@
             case 3:
             {
                 ///视频
-                FQCommunityBaseCell*cell = [tableView dequeueReusableCellWithIdentifier:@"FQPctureTCell"];
+                FQCommunityBaseCell*cell = [tableView dequeueReusableCellWithIdentifier:@"FQVedioCell"];
                 if (cell == nil) {
                     cell = [[UINib nibWithNibName:@"FQCommunityBaseCell" bundle:nil] instantiateWithOwner:nil options:nil].firstObject;
                 }
-                [cell updatePictureContentWithModel:nil];
+                [cell updateVedioContentWithModel:model];
                 return cell;
                 
             }
@@ -283,6 +283,32 @@
     
     
     return nil;
+}
+
+-(void)routerEventWithName:(NSString *)eventName dataInfo:(NSDictionary *)dataInfo{
+    if ([eventName isEqualToString:fq_commentDetail]||[eventName isEqualToString:fq_allCharacter]) {
+        NSMutableDictionary*info = [[NSMutableDictionary alloc]initWithDictionary:dataInfo];
+        NSInteger index = 0;
+        if (_scrollView.contentOffset.x>0) {
+            info[@"table"] = self.attentionTable;
+            if ([self.attentionArray indexOfObject:dataInfo[@"model"]]) {
+                index = [self.attentionArray indexOfObject:dataInfo[@"model"]];
+            }
+        }else{
+            info[@"table"] = self.recommandTable;
+            if ([self.recommendArray indexOfObject:dataInfo[@"model"]]) {
+                index = [self.recommendArray indexOfObject:dataInfo[@"model"]];
+            }
+        }
+        
+        info[@"index"] = @(index);
+        
+        [super routerEventWithName:eventName dataInfo:info];
+        return;
+    }
+    
+    [super routerEventWithName:eventName dataInfo:dataInfo];
+    
 }
 
 @end

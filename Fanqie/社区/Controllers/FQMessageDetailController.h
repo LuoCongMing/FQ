@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FQCommunityIndexModel.h"
 
+typedef void(^DetailComplete)(void);
 @interface FQMessageDetailController : UIViewController
-
+@property (nonatomic,copy)DetailComplete backBlock;
+@property (nonatomic,strong)FQCommunityIndexModel*model;
 @end

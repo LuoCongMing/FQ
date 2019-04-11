@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *pictureCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 
+///视频资源
+@property (nonatomic,strong)PHAsset*asset;
 
 @property (weak, nonatomic) IBOutlet UIButton *vedioButton;
 @property (weak, nonatomic) IBOutlet UIButton *pictureButton;
@@ -31,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *vedioPreView;
 ///图片数组(缩略图显示)
 @property (nonatomic,strong)NSMutableArray*imageArray;
 ///图片地址数组
@@ -67,6 +70,7 @@
     [self bind];
     _imageUrls = [[NSMutableArray alloc]init];
     _upManager = [[QNUploadManager alloc] init];
+    self.imageArray = [[NSMutableArray alloc]init];
     [self setCollectionView];
 }
 -(void)gettoken{
@@ -103,19 +107,58 @@
         }
         
         if (self.type == 2) {
-            return @(title.length>=4&&self.imageUrls.count>0&&title.length<=50);
+            return @(title.length>=4&&title.length<=50);
         }
         
         if (self.type == 3) {
             
-            return @(self.vedioUrl.length>0&&title.length>=4&&title.length<=50);
+            return @(title.length>=4&&title.length<=50);
         }
         return @(0);
     }];
     
     self.postButton .rac_command = [[RACCommand alloc]initWithEnabled:enableSignal signalBlock:^RACSignal *(id input) {
         @strongify(self)
-        [self publicWithType:self.type];
+        if (self.type == 1) {
+            [self publicWithType:self.type];
+            
+        }
+        if (self.type == 2) {
+            if (self.token.length>0) {
+                @weakify(self)
+                MBProgressHUD*hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.detailsLabel.text = @"上传中";
+                
+                [self uploadImages:self.imageArray Index:0 Complete:^{
+                    @strongify(self)
+                    ///上传图片完成
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self publicWithType:self.type];
+                        [hud hideAnimated:YES];
+                    });
+                    
+                }];
+                
+            }
+        }else{
+            if (self.type == 3) {
+                if (self.token.length>0) {
+                    @weakify(self)
+                    MBProgressHUD*hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    hud.detailsLabel.text = @"上传中";
+                    [self uploadVedio:self.asset Complete:^{
+                        @strongify(self)
+                        ///上传图片完成
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self publicWithType:self.type];
+                            [hud hideAnimated:YES];
+                        });
+                    }];
+                }
+            }
+            
+        }
+        
         
         return [RACSignal empty];
     }];
@@ -214,11 +257,15 @@
 
 - (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
     
+   
+    
     if (imagePickerController.mediaType == QBImagePickerMediaTypeImage) {
+        [self .imageUrls removeAllObjects];
+        [self.imageArray removeAllObjects];
         for (PHAsset *asset in assets) {
             // Do something with the asset
             PHImageManager * imageManager = [PHImageManager defaultManager];
-            self.imageArray = [[NSMutableArray alloc]init];
+            
             @weakify(self)
             [imageManager requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
                 @strongify(self)
@@ -234,29 +281,32 @@
         }
     }
     
-    [self .imageUrls removeAllObjects];
+    if (imagePickerController.mediaType == QBImagePickerMediaTypeVideo) {
+        self.asset = assets.firstObject;
+        [self getVideoImageFromPHAsset:assets.firstObject Complete:^(UIImage *image) {
+            self.vedioPreView.image = image;
+        }];
+    }
 
-        if (self.token.length>0) {
-            @weakify(self)
-            MBProgressHUD*hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.detailsLabel.text = @"上传中";
-
-            [self uploadImages:assets Index:0 Complete:^{
-                ///上传图片完成
-                dispatch_async(dispatch_get_main_queue(), ^{
-
-                    [hud hideAnimated:YES];
-                });
-
-            }];
-
-        }
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController{
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+- (void)getVideoImageFromPHAsset:(PHAsset *)asset Complete:(void (^)(UIImage *image))resultBack{
+    
+    PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+    option.resizeMode = PHImageRequestOptionsResizeModeFast;
+    
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeDefault options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        
+        UIImage *iamge = result;
+        resultBack(iamge);
+    }];
+}
+
 ///图片递归上传
 -(void)uploadImages:(NSArray*)array Index:(int)index Complete:(void(^)(void))complete{
     __block int currentIndex = index;
@@ -279,6 +329,17 @@
  
 }
 
+////上传视频
+-(void)uploadVedio:(PHAsset*)asset Complete:(void(^)(void))complete{
+    @weakify(self)
+    [_upManager putPHAsset:asset key:[self return16LetterAndNumber] token:self.token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        @strongify(self)
+        self.vedioUrl = key;
+        if (complete) {
+            complete();
+        }
+    } option:nil];
+}
 //随机名称
 -(NSString *)return16LetterAndNumber{
     //定义一个包含数字，大小写字母的字符串

@@ -29,4 +29,8 @@ typedef void(^FQFaildBlock)(id error);
 ///跳转到登录界面
 -(void)fq_LoginFirst;
 
+-(UIViewController*)controller;
+
+///获取视频封面
++(UIImage *)getThumbnailImage:(NSString *)videoURL;
 @end

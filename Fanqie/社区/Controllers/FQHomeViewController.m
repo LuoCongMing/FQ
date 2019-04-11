@@ -11,6 +11,9 @@
 #import "FQHomeViewController.h"
 #import "FQHomeContentView.h"
 #import "FQPublishVC.h"
+#import "FQMessageDetailController.h"
+#import "FQVideoPlayerVC.h"
+#import "FQUserInfoVC.h"
 
 
 @interface FQHomeViewController ()
@@ -111,18 +114,28 @@
 
 
 -(void)routerEventWithName:(NSString *)eventName dataInfo:(NSDictionary *)dataInfo{
-    if ([eventName isEqualToString:fq_allCharacter]) {
+    if ([eventName isEqualToString:fq_allCharacter]||[eventName isEqualToString:fq_commentDetail]) {
         //跳转到消息详情页面
-        [self performSegueWithIdentifier:@"messageDetail" sender:nil];
+        [self performSegueWithIdentifier:@"messageDetail" sender:dataInfo];
     }
-    if ([eventName isEqualToString:fq_commentDetail]) {
-        //跳转到消息评论页面
-        [self performSegueWithIdentifier:@"messageDetail" sender:nil];
-    }
+    
     if ([eventName isEqualToString:fq_photoBrowser]) {
         UIViewController*browser = dataInfo[@"vc"];
         // Present
         [self.navigationController pushViewController:browser animated:YES];
+    }
+    
+    if ([eventName isEqualToString:fq_vedioPlay]) {
+        FQVideoPlayerVC*player = [[FQVideoPlayerVC alloc]init];
+        player.url = dataInfo[@"url"];
+        [self presentViewController:player animated:YES completion:nil];
+    }
+    if ([eventName isEqualToString:fq_ShowUserInfo]) {
+        FQUserInfoVC*vc = [[UIStoryboard storyboardWithName:@"FQVideo" bundle:nil]instantiateViewControllerWithIdentifier:@"userInfo"];
+        vc.hidesBottomBarWhenPushed = YES;
+        FQCommunityIndexModel*model = dataInfo[@"model"];
+        vc.user_id = model.user_id;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -140,6 +153,22 @@
             [self.contentView.recommandTable.mj_header beginRefreshing];
         };
     }
+    
+    if ([segue.identifier isEqualToString:@"messageDetail"]) {
+        FQMessageDetailController*detail = segue.destinationViewController;
+        detail.model = [sender objectForKey:@"model"];
+//        @weakify(self)
+        detail.backBlock = ^{
+//          @strongify(self)
+            UITableView*table = [sender objectForKey:@"table"];
+            NSInteger index = [[sender objectForKey:@"index"] integerValue];
+            [table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        };
+    }
+    
+    
+    
+
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "FQADSModel.h"
 #import "FQBulletinModel.h"
 #import "FQCommunityIndexModel.h"
-
+#import "FQCommunityCommentModel.h"
 
 @interface CoreManager (Home)
 ///启动广告图片
@@ -57,6 +57,44 @@
 -(void)fq_copyCompleteBlock:(FQCompleteBlock)complete
                  FaildBlock:(FQFaildBlock)faild;
 
+
+/**
+ 获取文章详情
+ @param Id 文章ID
+ */
+-(void)fq_communityCommentDetailID:(int)Id CompleteBlock:(FQCompleteBlock)complete
+                            FaildBlock:(FQFaildBlock)faild;
+
+
+/**
+ 获取社区的评论列表
+
+ @param page 页数
+ @param Id 社区内容ID
+ @param sort 排序方式
+ */
+-(void)fq_communityCommentListWithPage:(int)page Community_id:(int)Id Sort:(int)sort CompleteBlock:(FQCompleteBlock)complete
+                            FaildBlock:(FQFaildBlock)faild;
+
+
+/**
+ 社区内容回复
+
+ @param community_id 社区内容id
+ @param commentcontent 回复内容
+ */
+-(void)fq_communityCommentPublicCommunity_id:(int)community_id Commentcontent:(NSString*)commentcontent CompleteBlock:(FQCompleteBlock)complete FaildBlock:(FQFaildBlock)faild;
+
+
+/**
+ 社区评论内容点赞
+
+ @param ID 评论内容id
+ @param type 1点赞2取消
+ @param community_id 社区内容id
+ 
+ */
+-(void)fq_zanWithComment_id:(int)ID Type:(int)type Community_id:(int)community_id CompleteBlock:(FQCompleteBlock)complete FaildBlock:(FQFaildBlock)faild;
 
 /**
 加关注

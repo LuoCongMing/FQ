@@ -12,6 +12,6 @@
 //最新
 @property (weak, nonatomic) IBOutlet UIButton *ZuiXin;
 //只看楼主
-@property (weak, nonatomic) IBOutlet UIButton *zhiKanLouZhu;
+@property (weak, nonatomic) IBOutlet UISwitch *zhiKanLouZhu;
 
 @end

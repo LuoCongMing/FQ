@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FQLiveModel.h"
 @interface FQLiveDetailVC : UIViewController
-
+@property (nonatomic,strong)FQLiveModel*model;
 @end

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SDCycleScrollView.h>
+//#import <SDCycleScrollView.h>
 
 
-@interface FQLiveHeaderView : UICollectionReusableView<SDCycleScrollViewDelegate>
-@property (nonatomic,strong)SDCycleScrollView*cycle;
+@interface FQLiveHeaderView : UICollectionReusableView
+//@property (nonatomic,strong)SDCycleScrollView*cycle;
 @end

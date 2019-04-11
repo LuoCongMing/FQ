@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FQCommunityCommentModel.h"
 
 @interface FQMessageDetailCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
@@ -14,8 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *creatInfoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UIButton *donotLike;
+//@property (weak, nonatomic) IBOutlet UIButton *donotLike;
 @property (weak, nonatomic) IBOutlet UIButton *more;
 
-
+-(void)updateContentWithModel:(FQCommunityCommentModel*)model;
 @end

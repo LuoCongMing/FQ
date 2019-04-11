@@ -16,38 +16,55 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGR-ao-YRn">
-                    <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGR-ao-YRn">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="GNL-CH-AxD"/>
+                        <constraint firstAttribute="width" constant="60" id="GNL-CH-AxD"/>
                         <constraint firstAttribute="height" constant="50" id="OfP-nu-PPa"/>
                     </constraints>
-                    <state key="normal" title="最新"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="最新" image="排序">
+                        <color key="titleColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="recently:" destination="iN0-l3-epB" eventType="touchUpInside" id="5bc-26-3Dr"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCW-qX-zw9">
-                    <rect key="frame" x="295" y="0.0" width="80" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="h91-5D-ThM"/>
-                        <constraint firstAttribute="height" constant="50" id="zz2-tH-T6p"/>
-                    </constraints>
-                    <state key="normal" title="只看楼主"/>
-                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="只看楼主" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emk-sY-a1L">
+                    <rect key="frame" x="248" y="16.5" width="48" height="17"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                    <color key="textColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SNK-22-40A">
+                    <rect key="frame" x="311" y="10" width="51" height="31"/>
+                    <connections>
+                        <action selector="louZhuOnly:" destination="iN0-l3-epB" eventType="valueChanged" id="mI3-l5-w8h"/>
+                        <action selector="switch:" destination="iN0-l3-epB" eventType="valueChanged" id="a3C-QA-mD1"/>
+                    </connections>
+                </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kCW-qX-zw9" secondAttribute="trailing" id="7Su-Yz-5fA"/>
-                <constraint firstItem="kCW-qX-zw9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="A1b-5l-GkI"/>
+                <constraint firstItem="Emk-sY-a1L" firstAttribute="centerY" secondItem="SNK-22-40A" secondAttribute="centerY" id="1o9-Hi-FSk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SNK-22-40A" secondAttribute="trailing" constant="15" id="BQP-OC-3Xu"/>
+                <constraint firstItem="SNK-22-40A" firstAttribute="centerY" secondItem="yGR-ao-YRn" secondAttribute="centerY" id="Rli-NN-oAS"/>
                 <constraint firstItem="yGR-ao-YRn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Xx5-HF-rYf"/>
-                <constraint firstItem="kCW-qX-zw9" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="bq9-0m-bkL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yGR-ao-YRn" secondAttribute="bottom" id="pZK-eM-7Bx"/>
                 <constraint firstItem="yGR-ao-YRn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="vM1-rc-vVE"/>
+                <constraint firstItem="SNK-22-40A" firstAttribute="leading" secondItem="Emk-sY-a1L" secondAttribute="trailing" constant="15" id="xdz-Rf-26c"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="ZuiXin" destination="yGR-ao-YRn" id="Ngq-aL-mjx"/>
-                <outlet property="zhiKanLouZhu" destination="kCW-qX-zw9" id="hMX-Hl-KAf"/>
+                <outlet property="zhiKanLouZhu" destination="SNK-22-40A" id="ykm-BV-i7f"/>
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="排序" width="10" height="11"/>
+    </resources>
 </document>

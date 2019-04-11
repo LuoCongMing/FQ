@@ -13,6 +13,9 @@
 static NSString*fq_allCharacter = @"fq_allCharacter";
 static NSString*fq_commentDetail = @"fq_commentDetail";
 static NSString*fq_photoBrowser = @"fq_photoBrowser";
+static NSString*fq_vedioPlay = @"fq_vedioPlay";
+static NSString*fq_ShowUserInfo = @"fq_ShowUserInfo";
+
 @interface FQCommunityBaseCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *nickName;

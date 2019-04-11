@@ -11,9 +11,9 @@
 @implementation FQLiveHeaderView
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
-    _cycle = [SDCycleScrollView cycleScrollViewWithFrame:frame delegate:self placeholderImage:nil];
-    _cycle.delegate = self;
-    [self addSubview:_cycle];
+//    _cycle = [SDCycleScrollView cycleScrollViewWithFrame:frame delegate:self placeholderImage:nil];
+//    _cycle.delegate = self;
+//    [self addSubview:_cycle];
     return self;
 }
 @end

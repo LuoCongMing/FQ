@@ -7,10 +7,11 @@
 //
 
 #import "FQLiveDetailVC.h"
+#import <SJVideoPlayer.h>
 
 @interface FQLiveDetailVC ()
-///聊天界面
-@property (weak, nonatomic) IBOutlet UIView *messageView;
+@property (weak, nonatomic) IBOutlet UIView *playerView;
+@property (nonatomic,strong)SJVideoPlayer*player;
 
 @end
 
@@ -19,6 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _player = [SJVideoPlayer player];
+    _player.view.frame = _playerView.bounds;
+    //    _player.hideBottomProgressSlider = YES;
+    [self.view addSubview:_player.view];
+    @weakify(self)
+    [_player.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self)
+        make.edges.equalTo(self.playerView);
+    }];
+    // 初始化资源
+    _player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:self.model.url]];
 }
 
 - (void)didReceiveMemoryWarning {

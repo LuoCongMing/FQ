@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FQLiveModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface FQLiveCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *backGrandImageView;
-@property (weak, nonatomic) IBOutlet UILabel *liveTitle;
-@property (weak, nonatomic) IBOutlet UILabel *nickName;
-@property (weak, nonatomic) IBOutlet UILabel *liveNum;
-@property (weak, nonatomic) IBOutlet UIView *redPoint;
 
+-(void)updateContentWithModel:(FQLiveModel*)model;
 @end

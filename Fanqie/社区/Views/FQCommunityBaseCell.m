@@ -11,9 +11,11 @@
 #import "SJActionSheet.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CoreManager+Home.h"
-#import "MJPhotoBrowser.h"
+#import "XLPhotoBrowser.h"
+#import <JPVideoPlayerKit.h>
 
-@interface FQCommunityBaseCell()
+
+@interface FQCommunityBaseCell()<JPVideoPlayerDelegate>
 ///文字内容
 @property (nonatomic,strong)UILabel*characterLabel;
 @property (nonatomic,strong)UIButton*allButton;
@@ -30,7 +32,77 @@
     // Initialization code
     self.iconImage.layer.cornerRadius = 12.5;
     self.iconImage.layer.masksToBounds = YES;
+    self.iconImage.userInteractionEnabled = YES;
+    [self.iconImage addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserInfo)]];
 }
+
+-(void)showUserInfo{
+    [self routerEventWithName:fq_ShowUserInfo dataInfo:@{@"model":self.model}];
+}
+-(void)updateVedioContentWithModel:(FQCommunityIndexModel *)model{
+    self.model = model;
+    
+    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:model.head_portrait]];
+    self.titleLabel.text = model.title;
+    self.nickName.text = model.user_nikname;
+    [self.likeButton setSelected:model.is_dianzan];
+    [self.likeButton setTitle:[NSString stringWithFormat:@"%d",model.community_dianzanncount] forState:UIControlStateNormal];
+    [self.shareButton setTitle:[NSString stringWithFormat:@"%d",model.community_sharcount] forState:UIControlStateNormal];
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%d",model.community_commentcount] forState:UIControlStateNormal];
+    UIImageView*vedioImageView = [[UIImageView alloc]init];
+    vedioImageView.layer.masksToBounds = YES;
+    vedioImageView.jp_videoPlayerDelegate = self;
+    vedioImageView.userInteractionEnabled = YES;
+//    vedioImageView.backgroundColor = [UIColor redColor];
+    [_fq_contenView addSubview:vedioImageView];
+    if (self.model.thubImage!=nil) {
+        vedioImageView.image = self.model.thubImage;
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            vedioImageView.image =  [CoreManager getThumbnailImage:model.videocontent];
+            self.model.thubImage = vedioImageView.image;
+        });
+    }
+    
+//
+    [vedioImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.size.mas_equalTo(@(CGSizeMake(iPhone_Width/2.0, (iPhone_Width/2.0)*3.0/2.0)));
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+//
+    UIButton*play = [UIButton buttonWithType:UIButtonTypeCustom];
+    [play setImage:[UIImage imageNamed:@"播放 (1)"] forState:UIControlStateNormal];
+//    [play addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+    play.tag = 99;
+    play.backgroundColor = [UIColor blueColor];
+    [vedioImageView addSubview:play];
+    [play mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(vedioImageView);
+        make.size.mas_equalTo(@(CGSizeMake(62, 62)));
+    }];
+    @weakify(vedioImageView)
+    @weakify(self)
+    
+    [[[play rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(id x) {
+      @strongify(vedioImageView)
+        @strongify(self)
+        [self routerEventWithName:fq_vedioPlay dataInfo:@{@"url":self.model.videocontent}];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [vedioImageView jp_playVideoMuteWithURL:[NSURL URLWithString:self.model.videocontent]
+//                                 bufferingIndicator:nil
+//                                       progressView:nil
+//                                      configuration:^(UIView *view, JPVideoPlayerModel *playerModel) {
+////                                          view.jp_muted = NO;
+//                                      }];
+//        });
+    }];
+   
+    
+}
+
 //图片
 -(void)updatePictureContentWithModel:(FQCommunityIndexModel*)model{
     self.model = model;
@@ -89,24 +161,9 @@
    
 -(void)showBrower:(UITapGestureRecognizer*)tap{
     
-    // 1.封装图片数据
-    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:count];
-    for (int i = 0; i<self.model.pictureArray.count; i++) {
-       
-        MJPhoto *photo = [[MJPhoto alloc] init];
-        photo.url = [NSURL URLWithString:self.model.pictureArray[i]]; // 图片路径
-        photo.srcImageView = tap.view; // 来源于哪个UIImageView
-        [photos addObject:photo];
-    }
-    
-    // 2.显示相册
-    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
-    browser.currentPhotoIndex = tap.view.tag; // 弹出相册时显示的第一张图片是？
-    browser.photos = photos; // 设置所有的图片
-    [browser show];
-
-    
+    [XLPhotoBrowser showPhotoBrowserWithImages:self.model.pictureArray currentImageIndex:tap.view.tag];
 }
+
 
 
 
@@ -176,7 +233,7 @@
 
 #pragma mark 全文
 -(void)all{
-    [self routerEventWithName:fq_allCharacter dataInfo:nil];
+    [self routerEventWithName:fq_allCharacter dataInfo:@{@"model":self.model}];
 }
 #pragma mark 分享
 
@@ -189,7 +246,7 @@
             hud.label.text = @"复制成功";
             [hud hideAnimated:YES afterDelay:1.0];
             UIPasteboard * pastboard = [UIPasteboard generalPasteboard];
-            pastboard.string = success[@"info"][@"name"];
+            pastboard.string = success[@"info"][@"others"];
         });
     } FaildBlock:^(id error) {
         
@@ -207,11 +264,27 @@
     }else{
         type = 1;
     }
+    __block int count = [sender.titleLabel.text intValue];
     @weakify(self)
     [task fq_zanWithID:self.model.id Type:type CompleteBlock:^(id success) {
         @strongify(self)
-        self.model.is_dianzan = type==1?YES:NO;
-        sender.selected = self.model.is_dianzan;
+        if (type == 1) {
+            count += 1;
+            self.model.is_dianzan = YES;
+            sender.selected = YES;
+        }else{
+            count -=1;
+            self.model.is_dianzan = NO;
+            sender.selected = NO;
+        }
+        self.model.community_dianzanncount = count;
+        if (sender.selected) {
+            ///已点赞 取消赞
+             [sender setTitle:[NSString stringWithFormat:@"%d",count] forState:UIControlStateNormal];
+        }else{
+            [sender setTitle:[NSString stringWithFormat:@"%d",count] forState:UIControlStateNormal];
+        }
+       
     } FaildBlock:^(id error) {
         
     }];
@@ -221,10 +294,10 @@
 #pragma mark 评论
 
 - (IBAction)comment:(id)sender {
-    [self routerEventWithName:fq_commentDetail dataInfo:nil];
+    [self routerEventWithName:fq_commentDetail dataInfo:@{@"model":self.model}];
 }
 - (IBAction)arrow:(UIButton *)sender {
-    SJActionSheet*sheet = [[SJActionSheet alloc]initSheetWithTitle:@"" style:SJSheetStyleWeiChat itemTitles:@[@"收藏",@"关注",@"屏蔽",@"举报"]];
+    SJActionSheet*sheet = [[SJActionSheet alloc]initSheetWithTitle:@"" style:SJSheetStyleWeiChat itemTitles:@[@"收藏",@"关注",@"举报"]];
     sheet.itemTextColor = UIColorFromRGB(0x323232);
     sheet.itemTextFont = PingFangSC(15);
     sheet.cancelTextFont = PingFangSC(15);

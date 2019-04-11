@@ -40,16 +40,12 @@
                         <color key="textColor" red="0.6705882353" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BP1-aX-enf">
-                        <rect key="frame" x="277" y="21.5" width="50" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwo-KX-tPd">
+                        <rect key="frame" x="357" y="25.5" width="6" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="yhO-3C-boo"/>
+                            <constraint firstAttribute="width" constant="6" id="odd-LJ-X2f"/>
                         </constraints>
-                        <state key="normal" title="踩"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwo-KX-tPd">
-                        <rect key="frame" x="332" y="21.5" width="31" height="30"/>
-                        <state key="normal" title="更多"/>
+                        <state key="normal" image="三个点 拷贝 3"/>
                         <connections>
                             <action selector="more:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Yfa-8F-fCL"/>
                         </connections>
@@ -60,31 +56,39 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2E-qp-prE">
-                        <rect key="frame" x="222" y="21.5" width="50" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2E-qp-prE">
+                        <rect key="frame" x="297" y="27" width="50" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="AKs-qU-0MY"/>
                         </constraints>
-                        <state key="normal" title="赞"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="0" image="赞 拷贝 2">
+                            <color key="titleColor" red="0.52156862745098043" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" image="赞">
+                            <color key="titleColor" red="1" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="zan:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6CH-nl-D9J"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gwo-KX-tPd" firstAttribute="leading" secondItem="S2E-qp-prE" secondAttribute="trailing" constant="10" id="16s-sJ-Bpk"/>
                     <constraint firstAttribute="trailing" secondItem="gwo-KX-tPd" secondAttribute="trailing" constant="12" id="1fT-Qc-CZc"/>
-                    <constraint firstItem="BP1-aX-enf" firstAttribute="leading" secondItem="S2E-qp-prE" secondAttribute="trailing" constant="5" id="9tR-ho-Hi8"/>
                     <constraint firstItem="S2E-qp-prE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GH5-sa-EFS" secondAttribute="trailing" constant="10" id="BLL-o2-7Zu"/>
                     <constraint firstItem="gwo-KX-tPd" firstAttribute="centerY" secondItem="RJn-vy-lNr" secondAttribute="centerY" id="GxO-KV-SNi"/>
                     <constraint firstAttribute="bottom" secondItem="IBf-no-OAv" secondAttribute="bottom" constant="24" id="Hir-qq-SHy"/>
+                    <constraint firstItem="S2E-qp-prE" firstAttribute="centerY" secondItem="gwo-KX-tPd" secondAttribute="centerY" id="L4z-eN-mlF"/>
                     <constraint firstItem="RJn-vy-lNr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="RmU-Tf-Bza"/>
                     <constraint firstItem="IBf-no-OAv" firstAttribute="top" secondItem="GH5-sa-EFS" secondAttribute="bottom" constant="14" id="Ttx-Bw-tEc"/>
-                    <constraint firstItem="gwo-KX-tPd" firstAttribute="leading" secondItem="BP1-aX-enf" secondAttribute="trailing" constant="5" id="ZWp-Uf-OFX"/>
                     <constraint firstItem="GH5-sa-EFS" firstAttribute="leading" secondItem="wN9-MH-jpj" secondAttribute="leading" id="Zny-2T-vjA"/>
                     <constraint firstItem="wN9-MH-jpj" firstAttribute="leading" secondItem="RJn-vy-lNr" secondAttribute="trailing" constant="8" id="aUF-Ii-aya"/>
-                    <constraint firstItem="BP1-aX-enf" firstAttribute="centerY" secondItem="gwo-KX-tPd" secondAttribute="centerY" id="de1-LE-s01"/>
                     <constraint firstItem="IBf-no-OAv" firstAttribute="trailing" secondItem="gwo-KX-tPd" secondAttribute="trailing" id="gwV-Fy-Onk"/>
                     <constraint firstItem="wN9-MH-jpj" firstAttribute="top" secondItem="RJn-vy-lNr" secondAttribute="top" id="j1p-4E-4Ul"/>
                     <constraint firstItem="RJn-vy-lNr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="jQP-It-9Td"/>
                     <constraint firstItem="GH5-sa-EFS" firstAttribute="bottom" secondItem="RJn-vy-lNr" secondAttribute="bottom" id="o9g-Qa-cg1"/>
-                    <constraint firstItem="S2E-qp-prE" firstAttribute="centerY" secondItem="BP1-aX-enf" secondAttribute="centerY" id="yL1-jH-r4b"/>
                     <constraint firstItem="IBf-no-OAv" firstAttribute="leading" secondItem="GH5-sa-EFS" secondAttribute="leading" id="zB6-KE-5s8"/>
                 </constraints>
             </tableViewCellContentView>
@@ -92,7 +96,6 @@
             <connections>
                 <outlet property="contentLabel" destination="IBf-no-OAv" id="rtQ-zE-Hjg"/>
                 <outlet property="creatInfoLabel" destination="GH5-sa-EFS" id="pvM-Pz-Npy"/>
-                <outlet property="donotLike" destination="BP1-aX-enf" id="tLH-xL-te8"/>
                 <outlet property="iconImage" destination="RJn-vy-lNr" id="v1z-tw-kj8"/>
                 <outlet property="likeButton" destination="S2E-qp-prE" id="dRz-8q-azl"/>
                 <outlet property="more" destination="gwo-KX-tPd" id="dKh-8F-PtX"/>
@@ -101,4 +104,9 @@
             <point key="canvasLocation" x="-33" y="-26"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="三个点 拷贝 3" width="3" height="14"/>
+        <image name="赞" width="18" height="19"/>
+        <image name="赞 拷贝 2" width="18" height="19"/>
+    </resources>
 </document>

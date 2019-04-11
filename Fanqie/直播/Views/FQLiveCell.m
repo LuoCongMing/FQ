@@ -8,6 +8,14 @@
 
 #import "FQLiveCell.h"
 
+@interface FQLiveCell()
+@property (weak, nonatomic) IBOutlet UIImageView *backGrandImageView;
+@property (weak, nonatomic) IBOutlet UILabel *liveTitle;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+@property (weak, nonatomic) IBOutlet UILabel *liveNum;
+@property (weak, nonatomic) IBOutlet UIView *redPoint;
+@end
+
 @implementation FQLiveCell
 
 - (void)awakeFromNib {
@@ -19,4 +27,10 @@
     self.layer.masksToBounds = YES;
 }
 
+-(void)updateContentWithModel:(FQLiveModel *)model{
+    [_backGrandImageView sd_setImageWithURL:[NSURL URLWithString:model.live_pic] placeholderImage:[UIImage imageNamed:@"图像默认"]];
+    _liveTitle.text = model.title;
+    _nickName.text = model.nikname;
+    
+}
 @end

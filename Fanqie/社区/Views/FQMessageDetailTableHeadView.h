@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FQCommunityIndexModel.h"
 #import "FQCustomButton.h"
 @interface FQMessageDetailTableHeadView : UIView
 
@@ -15,6 +15,8 @@
 
 -(CGFloat)updateCharacterContentWithModel:(id)model;
 -(CGFloat)updatePictureContentWithModel:(id)model;
+-(CGFloat)updateVedioContentWithModel:(id)model;
+@property (nonatomic,strong)FQCommunityIndexModel*model;
 @end
 
 @interface FQMessageDetailAuthorInfo : UIView
